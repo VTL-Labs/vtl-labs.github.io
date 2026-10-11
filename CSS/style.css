@@ -13,3 +13,9 @@ a {
   color: rgb(0, 255, 255);
   text-decoration: none;
 }
+
+.navbar {
+ position: sticky;
+ top: 0;
+ z-index: 1000;
+}
