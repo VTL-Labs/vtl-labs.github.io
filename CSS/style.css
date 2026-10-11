@@ -19,6 +19,12 @@ a {
     top: 0;
     z-index: 1000;
 
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    box-sizing: border-box;
+
     background-color: #101214;
     border-bottom: 1px solid #535163;
 }
