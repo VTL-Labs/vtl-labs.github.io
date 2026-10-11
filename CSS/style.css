@@ -22,7 +22,7 @@ html, body {
 
 .navbar {
     position: sticky;
-    top: 0;
+    top: 10;
     z-index: 1000;
     background-color: #101214;
 }
