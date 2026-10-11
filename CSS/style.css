@@ -14,17 +14,20 @@ a {
   text-decoration: none;
 }
 
-.navbar {
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-
+html, body {
     margin: 0;
     padding: 0;
+    width: 100%;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
     width: 100%;
     box-sizing: border-box;
 
     background-color: #101214;
-    border-bottom: 1px solid #535163;
+    border-bottom: 1px solid #30363d;
 }
