@@ -18,11 +18,26 @@
         <div class="terminal-body">
           <p class="terminal-text">Willkommen im Terminal!</p>
           <p class="terminal-prompt">Hier können Sie Befehle eingeben.</p>
-          <input type="text" placeholder="Befehl eingeben..." />
-          <button class="terminal-button">Ausführen</button>
+          <form class="terminal-command-form" id="terminal-form">
+            <label class="terminal-muted" for="terminal-input">Befehl</label>
+            <div class="terminal-command-row">
+              <input
+                id="terminal-input"
+                name="command"
+                type="text"
+                placeholder="open stonksSim"
+                autocomplete="off"
+                spellcheck="false"
+                required
+              />
+              <button class="terminal-button" type="submit">Ausführen</button>
+            </div>
+          </form>
+          <p class="terminal-output" id="terminal-output" role="status" aria-live="polite"></p>
         </div>
       </div>
       <p>Hallo, Welt!</p>
     </main>
+    <script src="../JS/script.js" defer></script>
   </body>
 </html>

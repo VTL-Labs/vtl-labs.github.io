@@ -236,6 +236,26 @@ th {
   padding: 1rem;
 }
 
+.terminal-command-form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.terminal-command-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.terminal-command-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.terminal-output {
+  min-height: 1.6em;
+  margin-bottom: 0;
+}
+
 .terminal-prompt::before,
 .prompt::before {
   content: "$ ";
@@ -278,6 +298,10 @@ th {
   color: var(--terminal-red);
 }
 
+.terminal-output.terminal-error {
+  padding: 0.35rem 0;
+}
+
 .terminal-cyan {
   color: var(--terminal-cyan);
 }
@@ -307,5 +331,12 @@ th {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-command-row {
+    align-items: stretch;
+    flex-direction: column;
   }
 }
