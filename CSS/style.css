@@ -15,7 +15,9 @@ a {
 }
 
 .navbar {
- position: sticky;
- top: 0;
- z-index: 1000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    border-bottom: 1px solid #7CFF6B;
 }
