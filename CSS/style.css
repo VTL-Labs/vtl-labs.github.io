@@ -1,39 +1,311 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 50px;
-  background-color: rgb(0, 0, 8);}
+:root {
+  color-scheme: dark;
+  --terminal-bg: #080d0a;
+  --terminal-surface: #0e1711;
+  --terminal-surface-raised: #142119;
+  --terminal-border: #294331;
+  --terminal-text: #c9f7d2;
+  --terminal-green: #62ff8f;
+  --terminal-muted: #82a98b;
+  --terminal-cyan: #70e7ff;
+  --terminal-red: #ff7777;
+  --terminal-yellow: #ffd166;
+  --terminal-font: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
 
-p {
-  color: rgb(255, 255, 255);
-  text-align: center;
-  margin-top: 20px;
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: var(--terminal-bg);
+  color: var(--terminal-text);
+  font-family: var(--terminal-font);
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--terminal-green);
+  color: var(--terminal-bg);
 }
 
 a {
-  color: rgb(0, 255, 255);
-  text-decoration: none;
+  color: var(--terminal-cyan);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: color 120ms ease, text-decoration-color 120ms ease;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
+a:hover {
+  color: var(--terminal-green);
+  text-decoration-color: currentColor;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--terminal-green);
+  outline-offset: 3px;
+}
+
+p {
+  margin: 1em 0;
+}
+
+main {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+  padding: clamp(1.25rem, 5vw, 3rem);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--terminal-green);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--terminal-border);
+  margin: 1.5rem 0;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--terminal-font);
+}
+
+code,
+kbd {
+  color: var(--terminal-cyan);
+}
+
+kbd {
+  border: 1px solid var(--terminal-border);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  background: var(--terminal-surface);
+  color: var(--terminal-text);
+}
+
+button,
+input,
+textarea,
+select {
+  border: 1px solid var(--terminal-border);
+  border-radius: 3px;
+  background: var(--terminal-surface);
+  color: var(--terminal-text);
+  font: inherit;
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  padding: 0.5rem 0.9rem;
+  color: var(--terminal-green);
+  cursor: pointer;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  border-color: var(--terminal-green);
+  background: var(--terminal-surface-raised);
+}
+
+input,
+textarea,
+select {
+  max-width: 100%;
+  padding: 0.5rem 0.65rem;
+}
+
+textarea {
+  width: 100%;
+  min-height: 7rem;
+  resize: vertical;
+}
+
+::placeholder {
+  color: var(--terminal-muted);
+  opacity: 1;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--terminal-border);
+  text-align: left;
+}
+
+th {
+  color: var(--terminal-green);
+  background: var(--terminal-surface);
 }
 
 .navbar {
-    position: sticky;
-    padding: 10px 20px;
-    top: 0;
-    z-index: 1000;
-    background-color: #101214;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.65rem clamp(1rem, 4vw, 2rem);
+  border-bottom: 1px solid var(--terminal-border);
+  background: rgb(8 13 10 / 95%);
+  backdrop-filter: blur(8px);
 }
 
-.navbar::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #30363d;
+.navbar a {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  color: var(--terminal-green);
+  text-decoration: none;
+}
+
+.navbar a::before {
+  content: "> ";
+  color: var(--terminal-muted);
+}
+
+.navbar a:hover,
+.navbar a:focus-visible {
+  background: var(--terminal-surface-raised);
+}
+
+/* Add these classes to opt into terminal window and status treatments. */
+.terminal,
+.terminal-window {
+  overflow: hidden;
+  border: 1px solid var(--terminal-border);
+  border-radius: 5px;
+  background: var(--terminal-surface);
+  box-shadow: 0 8px 28px rgb(0 0 0 / 25%);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.85rem;
+  border-bottom: 1px solid var(--terminal-border);
+  background: var(--terminal-surface-raised);
+  color: var(--terminal-muted);
+  font-size: 0.9rem;
+}
+
+.terminal-header::before {
+  content: "● ● ●";
+  color: var(--terminal-green);
+  letter-spacing: 0.12em;
+}
+
+.terminal-body,
+.terminal-output {
+  padding: 1rem;
+}
+
+.terminal-prompt::before,
+.prompt::before {
+  content: "$ ";
+  color: var(--terminal-green);
+}
+
+.terminal-button {
+  border-color: var(--terminal-green);
+  background: transparent;
+  color: var(--terminal-green);
+}
+
+.terminal-link {
+  color: var(--terminal-cyan);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.terminal-panel {
+  padding: 1rem;
+  border: 1px solid var(--terminal-border);
+  border-left: 3px solid var(--terminal-green);
+  background: var(--terminal-surface);
+}
+
+.terminal-text,
+.terminal-success {
+  color: var(--terminal-green);
+}
+
+.terminal-muted {
+  color: var(--terminal-muted);
+}
+
+.terminal-warning {
+  color: var(--terminal-yellow);
+}
+
+.terminal-error {
+  color: var(--terminal-red);
+}
+
+.terminal-cyan {
+  color: var(--terminal-cyan);
+}
+
+.terminal-cursor::after {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  margin-left: 0.2em;
+  background: currentColor;
+  content: "";
+  vertical-align: -0.12em;
+  animation: terminal-blink 1s steps(2, start) infinite;
+}
+
+@keyframes terminal-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
