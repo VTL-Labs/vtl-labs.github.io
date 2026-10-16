@@ -15,6 +15,15 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+
+# ----- USER-SPECIFIC ------
+# User-specific files
+
+# User-specific Folders
+TEMPLATES/ # Excludes our TEMPLATES folder, which contains our project templates. If you want to include it, remove this line. BUT: just dont do it, the users dont need it. 
+
+
+
 # Mono auto generated files
 mono_crash.*
 
