@@ -13,10 +13,10 @@ function stonks() {
 }
 
 function Update() {
-    const pElement = document.getElementById("stonksAnzeige");
-    if (pElement) {
-        pElement.innerText = "Stonks Counter: " + score;
-    }
+    const pElement = document.getElementById("stonksAnzeige"); 
+    pElement.innerText = "Stonks Counter: " + score;
+    const bElement = document.getElementById("Kaufpreis");
+    bElement.innerHTML = `+1 Klickstärke (${preisKlickstaerke})`;
 }
 
 function UpdateKlickstaerke() {
@@ -24,12 +24,12 @@ function UpdateKlickstaerke() {
         Einkaufen(preisKlickstaerke);     
         klickstaerke += 1;
         Inflation(); 
+        Update();
     }
 }
 
 function Einkaufen(kosten) {
     score -= kosten;
-    
     Update();
 }
 
