@@ -14,5 +14,13 @@ function Update() {
 }
 
 function UpdateKlickstaerke() {
-	klickstaerke += 1; 
+	if (score >= 20) {
+		Einkaufen(20);
+		klickstaerke += 1; 
+	}
+}
+
+function Einkaufen(kosten) {
+	score -= kosten;
+	Update();
 }
