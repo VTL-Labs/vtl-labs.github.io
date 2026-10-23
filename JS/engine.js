@@ -1,9 +1,10 @@
 // Variablen
 let score = 0;
+let klickstaerke = 1;
 
 // Funktionen
 function stonks() {
-	score += 1;
+	score += klickstaerke;
 	Update()
 }
 
@@ -12,3 +13,6 @@ function Update() {
 	pElement.innerText = "Stonks Counter: " + score;
 }
 
+function UpdateKlickstaerke() {
+	klickstaerke += 1; 
+}
