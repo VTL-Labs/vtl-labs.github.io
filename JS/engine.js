@@ -1,5 +1,5 @@
 // Variablen
-let score = 0;
+let score = 100;
 let klickstaerke = 1;
 let autoClickerStaerke = 0;
 
@@ -19,12 +19,14 @@ function Update() {            // Wir Updaten die Anzeigen
     pElement.innerText = "Stonks Counter: " + score;
     const bElement = document.getElementById("Kaufpreis");
     bElement.innerHTML = `+1 Klickstärke (${preisKlickstaerke})`;
+    const bElementAuto = document.getElementById("KaufpreisAuto");
+    bElementAuto.innerHTML = `Autoclicker (${preisAutoklicker})`;
 }
 
 function UpdateKlickstaerke() {     // Wir können erhöhte Klickstärke kaufen
     if (Einkaufen(preisKlickstaerke)) {     
         klickstaerke += 1;
-        Inflation(); 
+        preisKlickstaerke = Inflation(preisKlickstaerke); 
         Update();
     }
 }
@@ -40,13 +42,15 @@ function Einkaufen(kosten) {      // Das upgrades was kosten
     }
 }
 
-function Inflation() {  // Das die Kosten steigen
-    preisKlickstaerke += inflation; 
+function Inflation(kost) {  // Das die Kosten steigen
+   return kost + inflation; 
 }
 
 function AutoKlickerKaufen() {  // Wir können den Autoclicker kaufen
      if (Einkaufen(preisAutoklicker)) {
          autoClickerStaerke += 1;
+         preisAutoklicker = Inflation(preisAutoklicker);
+         Update();
      }
 }
 
